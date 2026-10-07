@@ -1,0 +1,65 @@
+<mvc:View controllerName="ama.s32.s32modelaggrsort.controller.Main"
+	xmlns:html="http://www.w3.org/1999/xhtml" 
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.m"
+	displayBlock="true" 
+	xmlns="sap.ui.table">
+	<m:Page id="pag01" title="{i18n>title}">
+		<m:content>
+			<m:Button id="btn01" text="Sortieren" press="onSort"/>
+			<m:Button id="btn02" text="Filtern" press="onFilter"/>
+			<m:Input id="inp01" placeholder="JJJJ" width="200px" />
+			<m:Button id="btn03" text="Reset" press="onReset"/>
+			<Table id="tbl01" selectionBehavior="RowOnly"
+				rows="{ path: '/oscar',
+						filters: [ {path: 'oscDate',
+									operator: 'Contains',
+									value1: '.02.' }
+								],
+						sorter: [ { path: 'oscFemaleLead',
+									descending: false } 
+								]}">
+				<columns>
+					<Column id="col01">
+						<label>
+							<m:Label id="lbl01" text="Jahr"/>
+						</label>
+						<template>
+							<m:Text id="txt01" text="{oscYear}"/>
+						</template>
+					</Column>
+					<Column id="col02">
+						<m:Label id="lbl02" text="Datum"/>
+						<template>
+							<m:Text id="txt02" text="{oscDate}"/>
+						</template>
+					</Column>
+					<Column id="col03">
+						<m:Label id="lbl03" text="Film"/>
+						<template>
+							<m:Text id="txt03" text="{oscBestFilm}"/>
+						</template>
+					</Column>
+					<Column  id="col04">
+						<m:Label id="lbl04" text="Regisseur"/>
+						<template>
+							<m:Text id="txt04" text="{oscBestDir}"/>
+						</template>
+					</Column>	
+					<Column id="col05">
+						<m:Label id="lbl05" text="Hauptdarsteller"/>
+						<template>
+							<m:Text id="txt05" text="{oscMaleLead}"/>
+						</template>
+					</Column>
+					<Column id="col06">
+						<m:Label id="lbl06" text="Hauptdarstellerin"/>
+						<template>
+							<m:Text id="txt06" text="{oscFemaleLead}"/>
+						</template>
+					</Column>
+				</columns>
+			</Table>
+		</m:content>
+	</m:Page>
+</mvc:View>
